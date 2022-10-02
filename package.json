@@ -1,0 +1,51 @@
+{
+  "name": "vkplay-cloud",
+  "productName": "VK Play Cloud",
+  "version": "1.0.1",
+  "author": {
+    "name": "64mb",
+    "url": "https://github.com/64mb"
+  },
+  "description": "Desktop web app for VK Play Cloud",
+  "main": "scripts/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win"
+  },
+  "build": {
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Games",
+      "artifactName": "${name}_${version}_linux.${ext}"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${name}.${ext}"
+    }
+  },
+  "keywords": [
+    "electron",
+    "vkplay",
+    "cloud"
+  ],
+  "devDependencies": {
+    "electron": "^21.0.1",
+    "electron-builder": "^23.3.3",
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.1"
+  }
+}
