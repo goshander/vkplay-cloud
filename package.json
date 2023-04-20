@@ -11,7 +11,8 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "build-win": "electron-builder --win"
+    "build-win": "electron-builder --win",
+    "build-linux": "electron-builder --linux"
   },
   "build": {
     "linux": {
@@ -39,13 +40,13 @@
     "cloud"
   ],
   "devDependencies": {
-    "electron": "^21.0.1",
-    "electron-builder": "^23.3.3",
-    "eslint": "^8.24.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.1"
+    "electron": "^24.1.2",
+    "electron-builder": "^24.1.2",
+    "eslint": "8.38.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.1.1"
   }
 }
