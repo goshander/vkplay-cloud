@@ -8,19 +8,22 @@ const homePage = 'https://cloud.vkplay.ru'
 // const checkApi = 'https://*.cloud.vkplay.ru/*'
 
 const userAgent
-= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36' // Windows
-// app.commandLine.appendSwitch('disable-features', 'UserAgentClientHint')
+= 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.3' // Windows
 
-app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder')
+app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,WaylandWindowDecorations,RawDraw')
+
 app.commandLine.appendSwitch(
   'disable-features',
   'UseChromeOSDirectVideoDecoder',
 )
 app.commandLine.appendSwitch('enable-accelerated-mjpeg-decode')
 app.commandLine.appendSwitch('enable-accelerated-video')
-app.commandLine.appendSwitch('ignore-gpu-blacklist')
+app.commandLine.appendSwitch('ignore-gpu-blocklist')
 app.commandLine.appendSwitch('enable-native-gpu-memory-buffers')
 app.commandLine.appendSwitch('enable-gpu-rasterization')
+app.commandLine.appendSwitch('enable-zero-copy')
+app.commandLine.appendSwitch('enable-gpu-memory-buffer-video-frames')
+app.commandLine.appendSwitch('use-gl', 'egl')
 
 async function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -68,6 +71,9 @@ app.whenReady().then(async () => {
     BrowserWindow.getAllWindows()[0].webContents.toggleDevTools()
   })
 
+  // const escTimeout = null
+  // const escDownTimeout = null
+
   globalShortcut.register('Esc', async () => {
     const window = BrowserWindow.getAllWindows()[0]
 
@@ -76,26 +82,35 @@ app.whenReady().then(async () => {
       keyCode: 'Esc',
     })
     window.webContents.sendInputEvent({
-      type: 'char',
-      keyCode: 'Esc',
-    })
-    window.webContents.sendInputEvent({
       type: 'keyUp',
       keyCode: 'Esc',
     })
 
-    window.webContents.sendInputEvent({
-      type: 'keyDown',
-      keyCode: 'Esc',
-    })
-    window.webContents.sendInputEvent({
-      type: 'char',
-      keyCode: 'Esc',
-    })
-    window.webContents.sendInputEvent({
-      type: 'keyUp',
-      keyCode: 'Esc',
-    })
+    // if (escTimeout) clearTimeout(escTimeout)
+    // if (!escDownTimeout) {
+    //   escDownTimeout = setTimeout(() => {
+    //     clearTimeout(escDownTimeout)
+    //     window.webContents.sendInputEvent({
+    //       type: 'keyDown',
+    //       keyCode: 'Esc',
+    //     })
+    //     window.webContents.sendInputEvent({
+    //       type: 'keyUp',
+    //       keyCode: 'Esc',
+    //     })
+    //   }, 2000)
+    // }
+    // escTimeout = setTimeout(() => {
+    //   if (escDownTimeout) {
+    //     clearTimeout(escDownTimeout)
+    //     escDownTimeout = null
+    //   }
+    // }, 100)
+
+    // window.webContents.sendInputEvent({
+    //   type: 'char',
+    //   keyCode: 'Esc',
+    // })
   })
 })
 

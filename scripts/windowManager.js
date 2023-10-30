@@ -55,9 +55,8 @@ app.on('browser-window-created', async (_, window) => {
       toggleFullscreen(true)
     }
   })
-  window.on('page-title-updated', async (event, title) => {
-    // ? FIX implement stream mode
-    toggleGameStreamingMode(title.includes('---'))
+  window.on('page-title-updated', async (__, title) => {
+    toggleGameStreamingMode(title.includes('on GeForce NOW'))
   })
 })
 

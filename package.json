@@ -3,8 +3,11 @@
   "productName": "VK Play Cloud",
   "version": "1.0.1",
   "author": {
-    "name": "64mb",
-    "url": "https://github.com/64mb"
+    "name": "goshander",
+    "url": "https://github.com/goshander"
+  },
+  "repository": {
+    "url": "https://github.com/goshander/vkplay-cloud"
   },
   "description": "Desktop web app for VK Play Cloud",
   "main": "scripts/main.js",
@@ -20,7 +23,7 @@
         "AppImage"
       ],
       "category": "Games",
-      "artifactName": "${name}_${version}_linux.${ext}"
+      "artifactName": "${name}.${ext}"
     },
     "win": {
       "target": [
@@ -40,8 +43,8 @@
     "cloud"
   ],
   "devDependencies": {
-    "electron": "^24.1.2",
-    "electron-builder": "^24.1.2",
+    "electron": "^27.0.2",
+    "electron-builder": "^24.6.4",
     "eslint": "8.38.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-import-resolver-alias": "1.1.2",
